@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>大件运输查询系统 - 新昌县交通运输行政执法队</title>
+    <title>大件运输路线查询系统</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
     <!-- 引入字体图标 -->
@@ -11,14 +11,27 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
+    <!-- 引入苹果风格字体 -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    />
   </head>
   <body>
     <!-- 头部区域 -->
-    <header class="header" id="header">
+    <header
+      class="header"
+      id="header"
+      style="
+        background-color: #ffffff;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      "
+    >
       <div class="container">
         <div class="logo">
-          <img src="images/logo.png" alt="新昌县交通运输行政执法队" />
-          <span class="logo-text">新昌县交通运输行政执法队</span>
+          <i class="bi bi-truck"></i>
+          <span class="logo-text">大件运输路线查询</span>
         </div>
         <nav class="nav">
           <ul class="nav-menu">
@@ -42,16 +55,18 @@
     <section class="hero" id="home">
       <div class="container">
         <div class="hero-content">
-          <h1>大件运输智能路况查询</h1>
-          <p>为您的大型运输车辆提供精准的路况与通行可能性分析</p>
+          <h1>大件运输路线智能查询系统</h1>
+          <p>输入车辆尺寸和路线，快速获知通行可行性</p>
           <div class="hero-buttons">
-            <a href="#query" class="btn btn-primary">立即查询</a>
+            <a href="#query" class="btn btn-secondary">立即查询</a>
             <a href="#how-it-works" class="btn btn-secondary">了解更多</a>
           </div>
         </div>
-        <div class="hero-image">
-          <!-- 图片已移除 -->
-        </div>
+      </div>
+      <!-- 添加装饰性元素 -->
+      <div class="hero-decoration">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
       </div>
     </section>
 
@@ -64,90 +79,114 @@
         </div>
         <div class="query-container">
           <div class="query-card">
-            <div class="card-content">
-              <form id="transport-form">
-                <div class="form-group">
-                  <label for="vehicle-length">车辆长度 (米)</label>
-                  <input
-                    type="number"
-                    id="vehicle-length"
-                    placeholder="请输入车辆长度"
-                    required
-                    min="0"
-                    step="0.1"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="vehicle-width">车辆宽度 (米)</label>
-                  <input
-                    type="number"
-                    id="vehicle-width"
-                    placeholder="请输入车辆宽度"
-                    required
-                    min="0"
-                    step="0.1"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="vehicle-height">车辆高度 (米)</label>
-                  <input
-                    type="number"
-                    id="vehicle-height"
-                    placeholder="请输入车辆高度"
-                    required
-                    min="0"
-                    step="0.1"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="vehicle-weight">车辆重量 (吨)</label>
-                  <input
-                    type="number"
-                    id="vehicle-weight"
-                    placeholder="请输入车辆重量"
-                    required
-                    min="0"
-                    step="0.1"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="route-select">选择路段</label>
-                  <select id="route-select" required>
-                    <option value="" disabled selected>请选择路段</option>
-                    <option value="route1">新昌县城至镜岭镇</option>
-                    <option value="route2">新昌县城至大市聚镇</option>
-                    <option value="route3">新昌县城至南明山景区</option>
-                    <option value="route4">新昌县城至嵊州市区</option>
-                    <option value="route5">新昌县城至石城镇</option>
-                  </select>
-                </div>
-                <div class="btn-container">
-                  <button type="submit" class="btn btn-primary">
-                    查询路况
-                  </button>
-                  <button type="reset" class="btn btn-outline">重置</button>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <div class="result-card" id="result-card">
             <div class="card-header">
-              <h3>查询结果</h3>
+              <h3>车辆信息</h3>
+              <p>请输入您的车辆详细信息和路线</p>
             </div>
             <div class="card-content">
-              <div class="result-message" id="result-message">
-                <!-- 结果将在这里显示 -->
-                <p class="placeholder-message">
-                  请输入您的车辆信息和路段，点击"查询路况"获取结果
-                </p>
-              </div>
-              <div class="detail-info" id="detail-info">
-                <!-- 详细信息将在这里显示 -->
+              <div class="form-content">
+                <form id="query-form">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="vehicle-length">车辆长度 (米)</label>
+                      <input
+                        type="number"
+                        id="vehicle-length"
+                        placeholder="例如: 8.5"
+                        required
+                        min="0"
+                        step="0.1"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="vehicle-width">车辆宽度 (米)</label>
+                      <input
+                        type="number"
+                        id="vehicle-width"
+                        placeholder="例如: 2.5"
+                        required
+                        min="0"
+                        step="0.1"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="vehicle-height">车辆高度 (米)</label>
+                      <input
+                        type="number"
+                        id="vehicle-height"
+                        placeholder="例如: 3.2"
+                        required
+                        min="0"
+                        step="0.1"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="vehicle-weight">车辆重量 (吨)</label>
+                      <input
+                        type="number"
+                        id="vehicle-weight"
+                        placeholder="例如: 15"
+                        required
+                        min="0"
+                        step="0.1"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group route-select-group">
+                    <label for="route-select">选择路线</label>
+                    <select id="route-select" required>
+                      <option value="" disabled selected>
+                        选择需要通行的路线
+                      </option>
+                      <option value="route1">新昌县城至镜岭镇</option>
+                      <option value="route2">新昌县城至大市聚镇</option>
+                      <option value="route3">新昌县城至南明山景区</option>
+                      <option value="route4">新昌县城至嵊州市区</option>
+                      <option value="route5">新昌县城至石城镇</option>
+                    </select>
+                    <div class="select-arrow">
+                      <i class="bi bi-chevron-down"></i>
+                    </div>
+                  </div>
+                  <div class="btn-container">
+                    <button type="reset" class="btn btn-outline">重置</button>
+                    <button type="submit" class="btn btn-primary">
+                      查询通行状态
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <!-- 弹出式结果卡片 -->
+      <div class="result-popup" id="result-popup">
+        <div class="result-card" id="result-card">
+          <div class="card-header">
+            <h3>查询结果</h3>
+            <button class="close-btn" id="close-result">
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="result-message" id="result-message">
+              <!-- 结果将在这里显示 -->
+              <p class="placeholder-message">
+                请输入您的车辆信息和路段，点击"查询通行状态"获取结果
+              </p>
+            </div>
+            <div class="detail-info" id="detail-info">
+              <!-- 详细信息将在这里显示 -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 添加装饰性背景元素 -->
+      <div class="section-decoration">
+        <div class="dot-pattern"></div>
       </div>
     </section>
 
@@ -366,7 +405,11 @@
             </div>
           </div>
           <div class="contact-map">
-            <!-- 图片已移除 -->
+            <!-- 改为现代化的地图占位符 -->
+            <div class="map-placeholder">
+              <i class="bi bi-pin-map-fill"></i>
+              <p>大件运输路线查询</p>
+            </div>
           </div>
         </div>
       </div>
@@ -378,8 +421,8 @@
         <div class="footer-content">
           <div class="footer-info">
             <div class="footer-logo">
-              <img src="images/logo.png" alt="新昌县交通运输行政执法队" />
-              <span>新昌县交通运输行政执法队</span>
+              <i class="bi bi-truck"></i>
+              <span>大件运输路线查询</span>
             </div>
             <p class="footer-desc">致力于为大件运输企业提供专业、高效的服务</p>
           </div>
@@ -413,7 +456,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>&copy; 2025 新昌县交通运输行政执法队 版权所有</p>
+          <p>&copy; 2025 大件运输路线查询 版权所有</p>
         </div>
       </div>
     </footer>
