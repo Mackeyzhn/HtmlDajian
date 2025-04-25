@@ -1,0 +1,10 @@
+/* 覆盖导航菜单样式 */
+.nav-menu a.active::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* 确保没有下划线效果 */
+.nav-menu a::after {
+  display: none !important;
+}
