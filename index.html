@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大件运输查询系统 - 新昌县交通运输行政执法队</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <!-- 引入字体图标 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <!-- 头部区域 -->
+    <header class="header" id="header">
+      <div class="container">
+        <div class="logo">
+          <img src="images/logo.png" alt="新昌县交通运输行政执法队" />
+          <span class="logo-text">新昌县交通运输行政执法队</span>
+        </div>
+        <nav class="nav">
+          <ul class="nav-menu">
+            <li><a href="#home" class="active">首页</a></li>
+            <li><a href="#query">路况查询</a></li>
+            <li><a href="#how-it-works">使用说明</a></li>
+            <li><a href="#testimonials">用户评价</a></li>
+            <li><a href="#faq">常见问题</a></li>
+            <li><a href="#contact">联系我们</a></li>
+          </ul>
+          <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- 首页 Hero 区域 -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <h1>大件运输智能路况查询</h1>
+          <p>为您的大型运输车辆提供精准的路况与通行可能性分析</p>
+          <div class="hero-buttons">
+            <a href="#query" class="btn btn-primary">立即查询</a>
+            <a href="#how-it-works" class="btn btn-secondary">了解更多</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <!-- 图片已移除 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 查询功能区域 -->
+    <section class="query-section" id="query">
+      <div class="container">
+        <div class="section-header">
+          <h2>路况通行查询</h2>
+          <p>输入您的车辆信息和目标路段，我们将为您提供精准的通行建议</p>
+        </div>
+        <div class="query-container">
+          <div class="query-card">
+            <div class="card-content">
+              <form id="transport-form">
+                <div class="form-group">
+                  <label for="vehicle-length">车辆长度 (米)</label>
+                  <input
+                    type="number"
+                    id="vehicle-length"
+                    placeholder="请输入车辆长度"
+                    required
+                    min="0"
+                    step="0.1"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="vehicle-width">车辆宽度 (米)</label>
+                  <input
+                    type="number"
+                    id="vehicle-width"
+                    placeholder="请输入车辆宽度"
+                    required
+                    min="0"
+                    step="0.1"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="vehicle-height">车辆高度 (米)</label>
+                  <input
+                    type="number"
+                    id="vehicle-height"
+                    placeholder="请输入车辆高度"
+                    required
+                    min="0"
+                    step="0.1"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="vehicle-weight">车辆重量 (吨)</label>
+                  <input
+                    type="number"
+                    id="vehicle-weight"
+                    placeholder="请输入车辆重量"
+                    required
+                    min="0"
+                    step="0.1"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="route-select">选择路段</label>
+                  <select id="route-select" required>
+                    <option value="" disabled selected>请选择路段</option>
+                    <option value="route1">新昌县城至镜岭镇</option>
+                    <option value="route2">新昌县城至大市聚镇</option>
+                    <option value="route3">新昌县城至南明山景区</option>
+                    <option value="route4">新昌县城至嵊州市区</option>
+                    <option value="route5">新昌县城至石城镇</option>
+                  </select>
+                </div>
+                <div class="btn-container">
+                  <button type="submit" class="btn btn-primary">
+                    查询路况
+                  </button>
+                  <button type="reset" class="btn btn-outline">重置</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="result-card" id="result-card">
+            <div class="card-header">
+              <h3>查询结果</h3>
+            </div>
+            <div class="card-content">
+              <div class="result-message" id="result-message">
+                <!-- 结果将在这里显示 -->
+                <p class="placeholder-message">
+                  请输入您的车辆信息和路段，点击"查询路况"获取结果
+                </p>
+              </div>
+              <div class="detail-info" id="detail-info">
+                <!-- 详细信息将在这里显示 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 使用说明区域 -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <h2>使用说明</h2>
+          <p>三步轻松查询大件运输路况信息</p>
+        </div>
+        <div class="steps-container">
+          <div class="step-card">
+            <div class="step-icon">
+              <i class="bi bi-1-circle-fill"></i>
+            </div>
+            <div class="step-content">
+              <h3>输入车辆信息</h3>
+              <p>准确填写您的车辆长度、宽度、高度和重量信息</p>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">
+              <i class="bi bi-2-circle-fill"></i>
+            </div>
+            <div class="step-content">
+              <h3>选择目标路段</h3>
+              <p>从下拉菜单中选择您需要通行的路段</p>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">
+              <i class="bi bi-3-circle-fill"></i>
+            </div>
+            <div class="step-content">
+              <h3>获取通行建议</h3>
+              <p>系统将根据您的车辆信息和路段情况，提供精准的通行建议</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 用户评价区域 -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <h2>用户评价</h2>
+          <p>听听其他运输企业对我们的评价</p>
+        </div>
+        <div class="testimonials-container">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">
+              <i class="bi bi-quote"></i>
+            </div>
+            <p class="testimonial-text">
+              通过这个查询系统，我们公司的大型设备运输变得更加高效安全。提前了解路况信息，避免了很多不必要的麻烦。
+            </p>
+            <div class="testimonial-author">
+              <img
+                src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
+                alt="王经理"
+              />
+              <div class="author-info">
+                <h4>王经理</h4>
+                <p>新昌运输有限公司</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-quote">
+              <i class="bi bi-quote"></i>
+            </div>
+            <p class="testimonial-text">
+              使用这个系统后，我们可以提前规划路线，节省了大量时间和成本。系统提供的信息非常准确，值得信赖。
+            </p>
+            <div class="testimonial-author">
+              <img
+                src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg"
+                alt="李经理"
+              />
+              <div class="author-info">
+                <h4>李经理</h4>
+                <p>绍兴大件运输集团</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-quote">
+              <i class="bi bi-quote"></i>
+            </div>
+            <p class="testimonial-text">
+              系统界面简洁明了，操作非常简单。对于我们这样的运输公司来说，是一个非常实用的工具。
+            </p>
+            <div class="testimonial-author">
+              <img
+                src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"
+                alt="张总监"
+              />
+              <div class="author-info">
+                <h4>张总监</h4>
+                <p>浙江特种运输有限公司</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 常见问题区域 -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <h2>常见问题</h2>
+          <p>解答您关心的问题</p>
+        </div>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>如何判断我的车辆是否属于大件运输?</h3>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                根据国家相关规定，车辆长度超过6米、宽度超过2.5米、高度超过4米或总重量超过49吨的车辆属于大件运输车辆，需要办理相关手续并注意通行条件。
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>我需要办理哪些手续才能进行大件运输?</h3>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                大件运输需要办理《超限运输车辆通行证》，可以前往当地交通运输局或通过政务服务网进行申请。申请时需要提供车辆信息、运输路线、货物信息等材料。
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>查询结果显示不能通行，我该怎么办?</h3>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                如果查询结果显示不能通行，您可以：1. 选择其他可行的替代路线；2.
+                联系我们的工作人员获取专业建议；3.
+                根据具体情况调整运输计划或车辆配置。
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>路况信息多久更新一次?</h3>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                我们的路况信息每天更新，对于重要路段的施工、交通管制等情况会实时更新，确保为您提供最准确的信息。
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>如何获取更多路段的通行信息?</h3>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                目前我们的系统覆盖了新昌县主要路段，如需了解更多路段信息，请联系我们的客服人员，或拨打服务热线：0575-12328。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 联系我们区域 -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2>联系我们</h2>
+          <p>如有疑问，请随时与我们联系</p>
+        </div>
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="info-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <div>
+                <h3>地址</h3>
+                <p>浙江省绍兴市新昌县南明街道人民路789号</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-telephone-fill"></i>
+              <div>
+                <h3>联系电话</h3>
+                <p>0575-12328</p>
+                <p>0575-86691234</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-envelope-fill"></i>
+              <div>
+                <h3>电子邮箱</h3>
+                <p>xcjtys@zjxc.gov.cn</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-clock-fill"></i>
+              <div>
+                <h3>办公时间</h3>
+                <p>周一至周五: 8:30 - 17:30</p>
+                <p>节假日休息</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-map">
+            <!-- 图片已移除 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚区域 -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <div class="footer-logo">
+              <img src="images/logo.png" alt="新昌县交通运输行政执法队" />
+              <span>新昌县交通运输行政执法队</span>
+            </div>
+            <p class="footer-desc">致力于为大件运输企业提供专业、高效的服务</p>
+          </div>
+          <div class="footer-links">
+            <div class="link-group">
+              <h3>快速链接</h3>
+              <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#query">路况查询</a></li>
+                <li><a href="#how-it-works">使用说明</a></li>
+                <li><a href="#testimonials">用户评价</a></li>
+              </ul>
+            </div>
+            <div class="link-group">
+              <h3>服务指南</h3>
+              <ul>
+                <li><a href="#faq">常见问题</a></li>
+                <li><a href="#">运输政策</a></li>
+                <li><a href="#">办事指南</a></li>
+                <li><a href="#">安全宣传</a></li>
+              </ul>
+            </div>
+            <div class="link-group">
+              <h3>关注我们</h3>
+              <div class="social-icons">
+                <a href="#"><i class="bi bi-wechat"></i></a>
+                <a href="#"><i class="bi bi-tencent-qq"></i></a>
+                <a href="#"><i class="bi bi-telephone"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 新昌县交通运输行政执法队 版权所有</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/query.js"></script>
+  </body>
+</html>
